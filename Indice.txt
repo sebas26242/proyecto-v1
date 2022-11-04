@@ -1,5 +1,6 @@
--(ojo no pude agregar color, investigue y lo probe pero no lo logre) :-(
+(ojo no pude agregar color, investigue y lo probe pero no lo logre) :-(
 
+capitulo 1 Introducción a Git
 Git es un sistema de control de versiones distribuido, lo que significa que un clon local del proyecto es un repositorio
 de control de versiones completo. Estos repositorios locales plenamente funcionales permiten trabajar sin
 conexión o de forma remota con facilidad.
