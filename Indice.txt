@@ -29,12 +29,29 @@ La migración a un sistema de control de versiones distribuido puede parecer una
 
 No obstante, usar Git para impulsar tu flujo de trabajo de desarrollo presenta algunas ventajas en comparación con SVN. En primer lugar, le brinda a cada desarrollador su propia copia local del proyecto completo. Este entorno aislado deja que cada desarrollador trabaje de forma independiente a todos los demás cambios de un proyecto; pueden añadir confirmaciones a su repositorio local y olvidarse por completo de los desarrollos posteriores hasta que los necesiten.
 
-Capítulo 3: Repositorios remotos
+Capítulo 3: Gestión de ramas
+
+La idea principal subyacente del flujo de trabajo de ramas de función es que el desarrollo de una función debe llevarse a cabo en una rama especializada en lugar de en la rama main. Este aislamiento permite que varios desarrolladores trabajen en una función concreta sin modificar el contenido del código base principal. También implica que la rama main no contendrá en ningún caso código erróneo, lo que supone una gran ventaja para los entornos de integración continua.
+
+El desarrollo de la función de aislamiento también permite aprovechar solicitudes de incorporación de cambios, que constituyen una forma de iniciar debates en torno a una rama, ya que brindan a otros desarrolladores la oportunidad de dar el visto bueno a una función antes de que esta se integre en el proyecto oficial. Otra posibilidad es que, si te atascas en medio de una función, abras una solicitud de incorporación de cambios en la que pidas sugerencias a tus compañeros. 
+El caso es que las solicitudes de incorporación de cambios hacen que a tu equipo le resulte increíblemente fácil comentarse el trabajo de forma recíproca.
+
+El flujo de trabajo de ramas de función en Git es un flujo de trabajo que puede estar compuesto por diversos elementos y que pueden aprovechar otros flujos de trabajo de Git de alto nivel. En la página de descripción general de los flujos de trabajo de Git ya comentamos otros flujos de trabajo de Git. El flujo de trabajo de ramas de función en Git es un modelo centrado en la creación de ramas, lo que significa que es un marco que sirve de patrón para la gestión y creación de ramas. 
+Otros flujos de trabajo están más centrados en el repositorio. El flujo de trabajo de ramas de función en Git se puede incorporar a otros flujos de trabajo Gitflow y los flujos de trabajo de bifurcación de Git usan tradicionalmente un flujo de trabajo de ramas de función en Git con respecto a sus modelos de creación de ramas.
+
+Funcionamiento
+
+El flujo de trabajo de ramas de función presupone la existencia de un repositorio central, y la rama main representa el historial oficial del proyecto. En vez de confirmar directamente en la rama main local, los desarrolladores crean una rama cada vez que empiezan a trabajar en una función nueva. Las ramas de función deben tener nombres descriptivos como, por ejemplo, "elementos-animados-menu" o "incidencia-#1061". La idea es asignar un objetivo claro y muy concreto a cada rama. 
+Git no hace ninguna distinción técnica entre la rama main y las de función, por lo que los desarrolladores pueden editar, preparar y confirmar cambios en una rama de función.
+Además, las ramas de función pueden (y deben) enviarse al repositorio central, lo que permite compartir una función con otros desarrolladores sin tocar nada del código oficial. Dado que la rama main es la única "especial", almacenar varias ramas de función en el repositorio central no supone ningún problema. Indudablemente, esta también supone una forma práctica de hacer una copia de seguridad de las confirmaciones locales de todo el mundo. A continuación, presentamos un recorrido por todo el ciclo de vida de una rama de función.
+
+Capítulo 4: Repositorios remotos
 
 Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura.
 
 Trabajar con Remotos
-Para poder colaborar en cualquier proyecto Git, necesitas saber cómo gestionar repositorios remotos. Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura. Colaborar con otras personas implica gestionar estos repositorios remotos enviando y trayendo datos de ellos cada vez que necesites compartir tu trabajo. Gestionar repositorios remotos incluye saber cómo añadir un repositorio remoto, eliminar los remotos que ya no son válidos, gestionar varias ramas remotas, definir si deben rastrearse o no y más. En esta sección, trataremos algunas de estas habilidades de gestión de remotos.
+Para poder colaborar en cualquier proyecto Git, necesitas saber cómo gestionar repositorios remotos. Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura. Colaborar con otras personas implica gestionar estos repositorios remotos enviando y trayendo datos de ellos cada vez que necesites compartir tu trabajo. 
+Gestionar repositorios remotos incluye saber cómo añadir un repositorio remoto, eliminar los remotos que ya no son válidos, gestionar varias ramas remotas, definir si deben rastrearse o no y más. En esta sección, trataremos algunas de estas habilidades de gestión de remotos.
 
 Para ver los remotos que tienes configurados, debes ejecutar el comando git remote. Mostrará los nombres de cada uno de los remotos que tienes especificados. Si has clonado tu repositorio, deberías ver al menos origin (origen, en inglés) - este es el nombre que por defecto Git le da al servidor del que has clonado:
 $ cd grit
